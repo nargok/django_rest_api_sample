@@ -16,6 +16,10 @@ class UserProfileSerializer(serializers.Serializer):
     fields = ('id', 'email', 'name', 'password')
     extra_kwargs = {'password': {'write_only': True}}
 
+  email = serializers.EmailField(required=True)
+  name = serializers.CharField(required=True, max_length=255)
+  password = serializers.CharField(required=True, max_length=255, write_only=True)
+
   def create(self, validated_data):
     """Create and return a new user"""
 
