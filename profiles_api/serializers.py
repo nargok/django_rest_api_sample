@@ -34,3 +34,9 @@ class UserProfileSerializer(serializers.Serializer):
     user.save()
 
     return user
+
+  def update(self, user, validated_data):
+    user.email = validated_data.get('email', user.email)
+    user.name = validated_data.get('name', user.name)
+
+    return user
