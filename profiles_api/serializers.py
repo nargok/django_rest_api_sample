@@ -36,7 +36,8 @@ class UserProfileSerializer(serializers.Serializer):
     return user
 
   def update(self, user, validated_data):
+    # TODO パスワード入力なしにProfile更新できるようにする
     user.email = validated_data.get('email', user.email)
     user.name = validated_data.get('name', user.name)
-
+    user.save()
     return user
